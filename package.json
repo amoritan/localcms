@@ -4,7 +4,10 @@
   "description": "The perfect CMS for your static web application",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "init": "node index.js",
+    "test": "jest",
+    "lint": "eslint './**/*.js'",
+    "lint:fix": "eslint --fix './**/*.js'"
   },
   "repository": {
     "type": "git",
@@ -24,6 +27,37 @@
   },
   "homepage": "https://github.com/andresmoritan/localcms#readme",
   "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-eslint": "^6.0.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsdoc": "^15.12.2",
+    "eslint-plugin-node": "^9.2.0",
+    "eslint-plugin-promise": "^4.2.1",
     "jest": "^26.4.2"
-  }
+  },
+  "eslintConfig": {
+    "env": {
+      "commonjs": true,
+      "es6": true
+    },
+    "extends": [
+      "eslint"
+    ],
+    "parserOptions": {
+      "ecmaVersion": 2018
+    },
+    "rules": {
+      "quotes": [
+        "error",
+        "single",
+        {
+          "avoidEscape": true
+        }
+      ],
+      "brace-style": "off",
+      "no-console": "warn",
+      "max-statements-per-line": "off"
+    }
+  },
+  "eslintIgnore": []
 }
