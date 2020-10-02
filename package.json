@@ -4,7 +4,7 @@
   "description": "The perfect CMS for your static web application",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/andresmoritan/localcms/issues"
   },
-  "homepage": "https://github.com/andresmoritan/localcms#readme"
+  "homepage": "https://github.com/andresmoritan/localcms#readme",
+  "devDependencies": {
+    "jest": "^26.4.2"
+  }
 }
