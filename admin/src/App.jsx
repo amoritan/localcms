@@ -1,5 +1,11 @@
 import React from 'react';
 
-const App = () => <h1>localcms-admin</h1>;
+import Header from './components/Header';
+
+const App = () => (
+  <div className="flex">
+    <Header />
+  </div>
+);
 
 export default App;
