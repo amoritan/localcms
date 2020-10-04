@@ -36,3 +36,4 @@ admin/.pnp*
 # React
 admin/coverage
 admin/build
+admin/src/index.css
