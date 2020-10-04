@@ -4,10 +4,16 @@
   "description": "The perfect CMS for your static web application",
   "main": "index.js",
   "scripts": {
-    "init": "node index.js",
+    "start": "node index.js",
+    "start:admin": "cd ./admin/ && npm start",
+    "install:admin": "cd ./admin/ && npm install",
     "test": "jest",
-    "lint": "eslint './**/*.js'",
-    "lint:fix": "eslint --fix './**/*.js'"
+    "test:admin": "cd ./admin/ && npm test",
+    "lint": "eslint --ext .js --ext .jsx .",
+    "lint:fix": "eslint --fix --ext .js --ext .jsx .",
+    "lint:admin": "cd ./admin/ && npm run lint",
+    "lint:admin:fix": "cd ./admin/ && npm run lint:fix",
+    "build:admin": "cd ./admin/ && npm run build"
   },
   "repository": {
     "type": "git",

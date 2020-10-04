@@ -17,6 +17,8 @@ build/Release
 
 # Dependency directories
 node_modules/
+admin/node_modules
+admin/.pnp*
 
 # Optional npm cache directory
 .npm
@@ -27,6 +29,10 @@ node_modules/
 # Output of 'npm pack'
 *.tgz
 
-# dotenv environment variables file
+# Environment variables file
 .env
 .env.test
+
+# React
+admin/coverage
+admin/build
