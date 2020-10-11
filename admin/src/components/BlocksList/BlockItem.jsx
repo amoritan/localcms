@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { startCase } from 'lodash';
 import { NavLink } from 'react-router-dom';
 
-const Block = ({ id }) => {
+const BlockItem = ({ id }) => {
   const name = startCase(id);
 
   return (
@@ -19,8 +19,8 @@ const Block = ({ id }) => {
   );
 };
 
-Block.propTypes = {
+BlockItem.propTypes = {
   id: PropTypes.string.isRequired,
 };
 
-export default Block;
+export default BlockItem;

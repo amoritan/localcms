@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Block from './Block';
+import BlockItem from './BlockItem';
 
 const BlocksList = ({ blocks }) => {
   const blockElements = blocks.map((blockId) => (
-    <Block key={blockId} id={blockId} />
+    <BlockItem key={blockId} id={blockId} />
   ));
 
   return (

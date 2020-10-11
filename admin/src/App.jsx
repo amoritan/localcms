@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import Header from './components/Header';
 import BlocksList from './components/BlocksList';
@@ -8,8 +9,10 @@ const App = () => (
   <div className="flex w-screen h-screen flex-col">
     <Header />
     <main className="flex flex-1 w-full">
-      <BlocksList />
-      <Editor />
+      <Router>
+        <BlocksList />
+        <Route path="/block/:blockId" component={Editor} />
+      </Router>
     </main>
   </div>
 );
