@@ -2,22 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { startCase } from 'lodash';
 
-// import EditorField from '../EditorField';
+import EditorField from '../EditorField';
 
 const Editor = ({ block }) => {
   const { id, fields } = block;
   const name = startCase(id);
 
-  // const fieldElements = fields.map((fieldProps) => (
-  //   <EditorField key={fieldProps.name} {...fieldProps} />
-  // ));
-
   const fieldElements = Object.values(fields).map((field) => (
-    <div>
-      {field.id}
-      :
-      {field.type}
-    </div>
+    <EditorField key={field.id} {...field} />
   ));
 
   return (
