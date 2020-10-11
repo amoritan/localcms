@@ -1,3 +1,3 @@
-import BlocksList from './BlocksList';
+import BlocksListContainer from './BlocksList.container';
 
-export default BlocksList;
+export default BlocksListContainer;

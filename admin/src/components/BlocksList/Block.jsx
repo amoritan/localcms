@@ -1,22 +1,14 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { startCase } from 'lodash';
 
-import { BlockType } from './types';
-
-const Block = ({
-  active,
-  name,
-  onSelected,
-  slug,
-}) => {
-  const handleClick = () => {
-    onSelected(slug);
-  };
-
+const Block = ({ id }) => {
+  const name = startCase(id);
+  const active = false;
   return (
     <li className="border-b-2">
       <button
         className={`p-5 w-full text-left ${active ? 'bg-blue-200' : 'hover:bg-blue-200'}`}
-        onClick={handleClick}
         type="button"
       >
         {name}
@@ -25,6 +17,8 @@ const Block = ({
   );
 };
 
-Block.propTypes = BlockType;
+Block.propTypes = {
+  id: PropTypes.string.isRequired,
+};
 
 export default Block;
