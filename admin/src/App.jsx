@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import Header from './components/Header';
 import BlocksList from './components/BlocksList';
+import Editor from './components/Editor';
 
 const fakeBlocksData = [
   {
@@ -9,24 +10,29 @@ const fakeBlocksData = [
     slug: 'header',
     fields: {
       title: 'text',
-      into: 'markdown',
+      intro: 'markdown',
+      preview: 'file',
     },
   },
   {
     name: 'Gallery',
     slug: 'gallery',
-    list: {
-      source: 'file',
-      alternativeText: 'text',
+    fields: {
+      gallery: {
+        source: 'file',
+        alternativeText: 'text',
+      },
     },
   },
   {
     name: 'Blog',
     slug: 'blog',
-    list: {
-      title: 'text',
-      photo: 'file',
-      content: 'markdown',
+    fields: {
+      blog: {
+        title: 'text',
+        photo: 'file',
+        content: 'markdown',
+      },
     },
   },
 ];
@@ -47,11 +53,14 @@ const App = () => {
     }
   ));
 
+  const activeBlockConfig = fakeBlocksData.find(({ slug }) => (activeBlock === slug));
+
   return (
     <div className="flex w-screen h-screen flex-col">
       <Header />
       <main className="flex flex-1 w-full">
         <BlocksList data={blocksData} />
+        <Editor config={activeBlockConfig} />
       </main>
     </div>
   );

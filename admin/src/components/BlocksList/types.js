@@ -8,5 +8,5 @@ export const BlockType = {
 };
 
 export const BlocksListType = {
-  data: PropTypes.arrayOf(PropTypes.shape(BlockType)).isRequired,
+  data: PropTypes.arrayOf(PropTypes.exact(BlockType)).isRequired,
 };
