@@ -5,15 +5,15 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "start:admin": "cd ./admin/ && npm start",
-    "install:admin": "cd ./admin/ && npm install",
+    "start:webapp": "cd ./packages/webapp/ && npm start",
+    "install:webapp": "cd ./packages/webapp/ && npm install",
     "test": "jest",
-    "test:admin": "cd ./admin/ && npm test",
+    "test:webapp": "cd ./packages/webapp/ && npm test",
     "lint": "eslint --ext .js --ext .jsx .",
     "lint:fix": "eslint --fix --ext .js --ext .jsx .",
-    "lint:admin": "cd ./admin/ && npm run lint",
-    "lint:admin:fix": "cd ./admin/ && npm run lint:fix",
-    "build:admin": "cd ./admin/ && npm run build"
+    "lint:webapp": "cd ./packages/webapp/ && npm run lint",
+    "lint:webapp:fix": "cd ./packages/webapp/ && npm run lint:fix",
+    "build:webapp": "cd ./packages/webapp/ && npm run build"
   },
   "repository": {
     "type": "git",
