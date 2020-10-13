@@ -4,5 +4,5 @@ import { getConfigBlocks } from '../state';
 
 export const getBlocksIds = createSelector(
   [(state) => getConfigBlocks(state)],
-  (configBlocks) => Object.keys(configBlocks),
+  (configBlocks) => Object.keys(configBlocks)
 );

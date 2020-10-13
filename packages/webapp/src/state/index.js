@@ -8,4 +8,5 @@ export default combineReducers({
 
 // config
 export const getConfigBlocks = (state) => fromConfig.getBlocks(state.config);
-export const getConfigBlockById = (state, id) => fromConfig.getBlockById(state.config, id);
+export const getConfigBlockById = (state, id) =>
+  fromConfig.getBlockById(state.config, id);

@@ -15,9 +15,7 @@ const Editor = ({ block }) => {
   return (
     <article className="w-full m-4 mb-0">
       <h2 className="text-2xl">{name}</h2>
-      <form>
-        {fieldElements}
-      </form>
+      <form>{fieldElements}</form>
     </article>
   );
 };

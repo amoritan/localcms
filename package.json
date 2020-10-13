@@ -39,7 +39,8 @@
     "eslint-plugin-jsdoc": "^15.12.2",
     "eslint-plugin-node": "^9.2.0",
     "eslint-plugin-promise": "^4.2.1",
-    "jest": "^26.4.2"
+    "jest": "^26.4.2",
+    "prettier": "2.1.2"
   },
   "eslintConfig": {
     "env": {
@@ -65,5 +66,7 @@
       "max-statements-per-line": "off"
     }
   },
-  "eslintIgnore": []
+  "prettier": {
+    "singleQuote": true
+  }
 }

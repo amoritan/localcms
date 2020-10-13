@@ -10,9 +10,7 @@ const BlocksList = ({ blocks }) => {
 
   return (
     <nav className="w-1/5 bg-gray-200">
-      <ul>
-        {blockElements}
-      </ul>
+      <ul>{blockElements}</ul>
     </nav>
   );
 };
