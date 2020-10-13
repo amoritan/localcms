@@ -4,13 +4,14 @@
   "description": "The perfect CMS for your static web application",
   "main": "index.js",
   "scripts": {
+    "setup": "npm install && npm run install:webapp",
     "start": "node index.js",
     "start:webapp": "cd ./packages/webapp/ && npm start",
     "install:webapp": "cd ./packages/webapp/ && npm install",
     "test": "jest",
     "test:webapp": "cd ./packages/webapp/ && npm test",
-    "lint": "eslint --ext .js --ext .jsx .",
-    "lint:fix": "eslint --fix --ext .js --ext .jsx .",
+    "lint": "eslint --ext .js .",
+    "lint:fix": "eslint --fix --ext .js .",
     "lint:webapp": "cd ./packages/webapp/ && npm run lint",
     "lint:webapp:fix": "cd ./packages/webapp/ && npm run lint:fix",
     "build:webapp": "cd ./packages/webapp/ && npm run build"
@@ -39,7 +40,9 @@
     "eslint-plugin-jsdoc": "^15.12.2",
     "eslint-plugin-node": "^9.2.0",
     "eslint-plugin-promise": "^4.2.1",
+    "husky": "^4.3.0",
     "jest": "^26.4.2",
+    "lint-staged": "^10.4.0",
     "prettier": "2.1.2"
   },
   "eslintConfig": {
@@ -68,5 +71,14 @@
   },
   "prettier": {
     "singleQuote": true
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": "eslint --cache --fix",
+    "*.{js,css,md}": "prettier --write"
   }
 }

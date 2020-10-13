@@ -23,8 +23,8 @@
     "build:css": "postcss ./src/index.scss -o ./src/index.css",
     "test": "SKIP_PREFLIGHT_CHECK=true react-scripts test",
     "eject": "SKIP_PREFLIGHT_CHECK=true react-scripts eject",
-    "lint": "eslint --config ./package.json --ext .js --ext .jsx .",
-    "lint:fix": "eslint --config ./package.json --fix --ext .js --ext .jsx ."
+    "lint": "eslint --config ./package.json --ext .js .",
+    "lint:fix": "eslint --config ./package.json --fix --ext .js ."
   },
   "eslintConfig": {
     "root": true,
