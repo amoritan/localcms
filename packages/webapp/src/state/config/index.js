@@ -1,8 +1,14 @@
+// @flow strict
 import { CONFIG_INITIALIZED } from '../../actions/config';
+import type { Action } from '../../actions/types';
 
 import initialState from './initialState';
+import type { ConfigState, ConfigBlockId, Block } from './types';
 
-const config = (state = initialState, { type, payload }) => {
+const config = (
+  state: ConfigState = initialState,
+  { type, payload }: Action
+): ConfigState => {
   switch (type) {
     case CONFIG_INITIALIZED:
       return payload;
@@ -13,5 +19,7 @@ const config = (state = initialState, { type, payload }) => {
 
 export default config;
 
-export const getBlocks = (state) => state.blocks;
-export const getBlockById = (state, id) => state.blocks[id];
+export const getBlockIds = (state: ConfigState): Array<ConfigBlockId> =>
+  Object.keys(state.blocks);
+export const getBlockById = (state: ConfigState, id: ConfigBlockId): Block =>
+  state.blocks[id];

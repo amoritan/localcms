@@ -1,3 +1,4 @@
+// @flow strict
 const fakeConfig = {
   blocks: {
     header: {

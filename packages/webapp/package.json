@@ -8,7 +8,6 @@
     "@testing-library/user-event": "^7.1.2",
     "lodash": "^4.17.20",
     "node-sass": "^4.14.1",
-    "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.1",
@@ -24,7 +23,11 @@
     "test": "SKIP_PREFLIGHT_CHECK=true react-scripts test",
     "eject": "SKIP_PREFLIGHT_CHECK=true react-scripts eject",
     "lint": "eslint --config ./package.json --ext .js .",
-    "lint:fix": "eslint --config ./package.json --fix --ext .js ."
+    "lint:fix": "eslint --config ./package.json --fix --ext .js .",
+    "flow": "flow",
+    "flow:focused": "flow focus-check",
+    "flow-typed:update": "flow-typed update --skip --ignoreDeps dev bundled peer",
+    "flow-typed:create-stub": "flow-typed create-stub"
   },
   "eslintConfig": {
     "root": true,
@@ -84,6 +87,8 @@
     "eslint-plugin-jsx-a11y": "^6.3.1",
     "eslint-plugin-react": "^7.20.4",
     "eslint-plugin-react-hooks": "^2.5.1",
+    "flow-bin": "^0.135.0",
+    "flow-typed": "^3.2.1",
     "postcss": "^8.1.1",
     "postcss-cli": "^8.0.0",
     "tailwindcss": "^1.8.10"

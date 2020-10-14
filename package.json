@@ -8,13 +8,15 @@
     "start": "node index.js",
     "start:webapp": "cd ./packages/webapp/ && npm start",
     "install:webapp": "cd ./packages/webapp/ && npm install",
+    "build:webapp": "cd ./packages/webapp/ && npm run build",
     "test": "jest",
     "test:webapp": "cd ./packages/webapp/ && npm test",
     "lint": "eslint --ext .js .",
     "lint:fix": "eslint --fix --ext .js .",
     "lint:webapp": "cd ./packages/webapp/ && npm run lint",
     "lint:webapp:fix": "cd ./packages/webapp/ && npm run lint:fix",
-    "build:webapp": "cd ./packages/webapp/ && npm run build"
+    "flow:webapp": "cd ./packages/webapp/ && npm run flow",
+    "flow-typed:webapp:update": "cd ./packages/webapp/ && npm run flow-typed:update"
   },
   "repository": {
     "type": "git",
@@ -78,7 +80,7 @@
     }
   },
   "lint-staged": {
-    "*.js": "eslint --cache --fix",
+    "*.js": "eslint --cache --fix && flow:webapp:focused",
     "*.{js,css,md}": "prettier --write"
   }
 }

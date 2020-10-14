@@ -1,9 +1,17 @@
+// @flow strict
 import React from 'react';
-import PropTypes from 'prop-types';
 import { startCase } from 'lodash';
 import { NavLink } from 'react-router-dom';
 
-const BlockItem = ({ id }) => {
+import type { Node } from 'react';
+
+import type { ConfigBlockId } from '../../state/config/types';
+
+type Props = {|
+  id: ConfigBlockId,
+|};
+
+const BlockItem = ({ id }: Props): Node => {
   const name = startCase(id);
 
   return (
@@ -17,10 +25,6 @@ const BlockItem = ({ id }) => {
       </NavLink>
     </li>
   );
-};
-
-BlockItem.propTypes = {
-  id: PropTypes.string.isRequired,
 };
 
 export default BlockItem;

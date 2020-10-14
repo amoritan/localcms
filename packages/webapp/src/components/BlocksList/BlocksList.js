@@ -1,9 +1,17 @@
+// @flow strict
 import React from 'react';
-import PropTypes from 'prop-types';
+
+import type { Node } from 'react';
+
+import type { ConfigBlockId } from '../../state/config/types';
 
 import BlockItem from './BlockItem';
 
-const BlocksList = ({ blocks }) => {
+type Props = {|
+  blocks: Array<ConfigBlockId>,
+|};
+
+const BlocksList = ({ blocks }: Props): Node => {
   const blockElements = blocks.map((blockId) => (
     <BlockItem key={blockId} id={blockId} />
   ));
@@ -13,10 +21,6 @@ const BlocksList = ({ blocks }) => {
       <ul>{blockElements}</ul>
     </nav>
   );
-};
-
-BlocksList.propTypes = {
-  blocks: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 export default BlocksList;

@@ -1,7 +1,15 @@
+// @flow strict
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 
-const FileInput = ({ name }) => {
+import type { Node } from 'react';
+
+import type { ConfigFieldId } from '../../state/config/types';
+
+type Props = {|
+  name: ConfigFieldId,
+|};
+
+const FileInput = ({ name }:Props):Node => {
   const [value, setValue] = useState('');
 
   const handleChange = (event) => {
@@ -17,10 +25,6 @@ const FileInput = ({ name }) => {
       onChange={handleChange}
     />
   );
-};
-
-FileInput.propTypes = {
-  name: PropTypes.string.isRequired,
 };
 
 export default FileInput;

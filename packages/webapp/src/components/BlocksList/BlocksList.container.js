@@ -1,11 +1,27 @@
+// @flow strict
 import { connect } from 'react-redux';
 
-import { getBlocksIds } from '../../selectors/config';
+import type { ComponentType } from 'react';
+
+import { getConfigBlockIds } from '../../state';
+
+import type { State } from '../../state/types';
+import type { ConfigBlockId } from '../../state/config/types';
 
 import BlocksList from './BlocksList';
 
-const mapStateToProps = (state) => ({
-  blocks: getBlocksIds(state),
+type OwnProps = {||};
+
+type Props = {|
+  blocks: Array<ConfigBlockId>,
+|};
+
+const mapStateToProps = (state: State): Props => ({
+  blocks: getConfigBlockIds(state),
 });
 
-export default connect(mapStateToProps, null)(BlocksList);
+const BlocksListContainer: ComponentType<OwnProps> = connect(mapStateToProps)(
+  BlocksList
+);
+
+export default BlocksListContainer;

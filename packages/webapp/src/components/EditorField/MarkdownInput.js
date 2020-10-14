@@ -1,7 +1,16 @@
+// @flow strict
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 
-const MarkdownInput = ({ name, initialValue }) => {
+import type { Node } from 'react';
+
+import type { ConfigFieldId } from '../../state/config/types';
+
+type Props = {|
+  name: ConfigFieldId,
+  initialValue?: string,
+|};
+
+const MarkdownInput = ({ name, initialValue }:Props):Node => {
   const [value, setValue] = useState(initialValue);
 
   const handleChange = (event) => {
@@ -18,11 +27,6 @@ const MarkdownInput = ({ name, initialValue }) => {
       onChange={handleChange}
     />
   );
-};
-
-MarkdownInput.propTypes = {
-  name: PropTypes.string.isRequired,
-  initialValue: PropTypes.string,
 };
 
 MarkdownInput.defaultProps = {

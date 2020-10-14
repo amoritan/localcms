@@ -1,0 +1,21 @@
+[ignore]
+.*\.test\.js
+postcss.config.js
+tailwind.config.js
+
+[include]
+flow-typed
+
+[libs]
+
+[lints]
+
+[options]
+module.name_mapper.extension='svg' -> '<PROJECT_ROOT>/flow-helpers/SVGModule.js'
+
+[strict]
+nonstrict-import
+unclear-type
+unsafe-getters-setters
+untyped-import
+untyped-type-import

@@ -1,19 +1,19 @@
+// @flow strict
 import React from 'react';
-import PropTypes from 'prop-types';
+
+import type { Node } from 'react';
+
+import type { Field } from '../../state/config/types';
 
 import EditorField from './EditorField';
-// import ListField from './ListField';
 
-const EditorFieldWrapper = (props) => {
-  const { type } = props;
+type Props = Field;
+
+const EditorFieldWrapper = (props:Props):Node => {
+  const { id, type } = props;
   if (type === 'list') return null;
 
-  return <EditorField {...props} />;
-};
-
-EditorFieldWrapper.propTypes = {
-  id: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
+  return <EditorField id={id} type={type} />;
 };
 
 export default EditorFieldWrapper;

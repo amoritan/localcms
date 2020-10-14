@@ -1,16 +1,27 @@
+// @flow strict
 import React from 'react';
-import PropTypes from 'prop-types';
 import { startCase } from 'lodash';
+
+import type { Node } from 'react';
 
 import EditorField from '../EditorField';
 
-const Editor = ({ block }) => {
+import type { Block } from '../../state/config/types';
+
+type Props = {|
+  block: ?Block,
+|};
+
+const Editor = ({ block }: Props): Node => {
+  if (!block) return null;
+
   const { id, fields } = block;
   const name = startCase(id);
 
-  const fieldElements = Object.values(fields).map((field) => (
-    <EditorField key={field.id} {...field} />
-  ));
+  const fieldElements = Object.keys(fields).map((fieldId) => {
+    const field = fields[fieldId];
+    return <EditorField key={fieldId} {...field} />;
+  });
 
   return (
     <article className="w-full m-4 mb-0">
@@ -18,13 +29,6 @@ const Editor = ({ block }) => {
       <form>{fieldElements}</form>
     </article>
   );
-};
-
-Editor.propTypes = {
-  block: PropTypes.exact({
-    id: PropTypes.string.isRequired,
-    fields: PropTypes.object.isRequired,
-  }).isRequired,
 };
 
 export default Editor;
