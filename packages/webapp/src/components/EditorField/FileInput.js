@@ -6,10 +6,10 @@ import type { Node } from 'react';
 import type { ConfigFieldId } from '../../state/config/types';
 
 type Props = {|
-  name: ConfigFieldId,
+  htmlId: ConfigFieldId,
 |};
 
-const FileInput = ({ name }:Props):Node => {
+const FileInput = ({ htmlId }: Props): Node => {
   const [value, setValue] = useState('');
 
   const handleChange = (event) => {
@@ -20,7 +20,7 @@ const FileInput = ({ name }:Props):Node => {
     <input
       type="file"
       className="w-full border-solid border-2 border-gray-200 p-2"
-      id={name}
+      id={htmlId}
       value={value}
       onChange={handleChange}
     />

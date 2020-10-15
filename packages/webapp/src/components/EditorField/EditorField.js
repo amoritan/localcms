@@ -10,19 +10,20 @@ import MarkdownInput from './MarkdownInput';
 import FileInput from './FileInput';
 
 type Props = {|
-  id: ConfigFieldId,
+  name: ConfigFieldId,
   type: FieldType,
+  htmlId: string,
   fromList?: boolean,
 |};
 
-const EditorField = ({ id, type, fromList }:Props):Node => (
+const EditorField = ({ name, type, htmlId, fromList }: Props): Node => (
   <fieldset className={fromList ? 'm-4' : 'my-8'}>
-    <label htmlFor={id} className="font-mono bg-gray-200 p-2">
-      {id}
+    <label htmlFor={htmlId} className="font-mono bg-gray-200 p-2">
+      {name}
     </label>
-    {type === 'text' && <TextInput name={id} />}
-    {type === 'markdown' && <MarkdownInput name={id} />}
-    {type === 'file' && <FileInput name={id} />}
+    {type === 'text' && <TextInput htmlId={htmlId} />}
+    {type === 'markdown' && <MarkdownInput htmlId={htmlId} />}
+    {type === 'file' && <FileInput htmlId={htmlId} />}
   </fieldset>
 );
 

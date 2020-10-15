@@ -6,11 +6,11 @@ import type { Node } from 'react';
 import type { ConfigFieldId } from '../../state/config/types';
 
 type Props = {|
-  name: ConfigFieldId,
+  htmlId: ConfigFieldId,
   initialValue?: string,
 |};
 
-const TextInput = ({ name, initialValue }:Props):Node => {
+const TextInput = ({ htmlId, initialValue }: Props): Node => {
   const [value, setValue] = useState(initialValue);
 
   const handleChange = (event) => {
@@ -21,7 +21,7 @@ const TextInput = ({ name, initialValue }:Props):Node => {
     <input
       type="text"
       className="w-full border-solid border-2 border-gray-200 p-2"
-      id={name}
+      id={htmlId}
       value={value}
       onChange={handleChange}
     />

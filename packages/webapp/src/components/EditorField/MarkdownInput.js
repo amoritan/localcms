@@ -6,11 +6,11 @@ import type { Node } from 'react';
 import type { ConfigFieldId } from '../../state/config/types';
 
 type Props = {|
-  name: ConfigFieldId,
+  htmlId: ConfigFieldId,
   initialValue?: string,
 |};
 
-const MarkdownInput = ({ name, initialValue }:Props):Node => {
+const MarkdownInput = ({ htmlId, initialValue }: Props): Node => {
   const [value, setValue] = useState(initialValue);
 
   const handleChange = (event) => {
@@ -22,7 +22,7 @@ const MarkdownInput = ({ name, initialValue }:Props):Node => {
       type="text"
       className="w-full border-solid border-2 border-gray-200 p-2"
       rows="12"
-      id={name}
+      id={htmlId}
       value={value}
       onChange={handleChange}
     />
