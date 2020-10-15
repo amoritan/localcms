@@ -3,14 +3,14 @@ import React from 'react';
 
 import type { Node } from 'react';
 
-import type { ConfigFieldId, FieldType } from '../../state/config/types';
+import type { FieldId, FieldType } from '../../constants/types';
 
 import TextInput from './TextInput';
 import MarkdownInput from './MarkdownInput';
 import FileInput from './FileInput';
 
 type Props = {|
-  name: ConfigFieldId,
+  name: FieldId,
   type: FieldType,
   htmlId: string,
   fromList?: boolean,

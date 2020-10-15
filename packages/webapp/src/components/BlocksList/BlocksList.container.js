@@ -6,14 +6,14 @@ import type { ComponentType } from 'react';
 import { getConfigBlockIds } from '../../state';
 
 import type { State } from '../../state/types';
-import type { ConfigBlockId } from '../../state/config/types';
+import type { BlockId } from '../../constants/types';
 
 import BlocksList from './BlocksList';
 
 type OwnProps = {||};
 
 type Props = {|
-  blocks: Array<ConfigBlockId>,
+  blocks: Array<BlockId>,
 |};
 
 const mapStateToProps = (state: State): Props => ({

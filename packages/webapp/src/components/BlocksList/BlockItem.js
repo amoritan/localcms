@@ -5,10 +5,10 @@ import { NavLink } from 'react-router-dom';
 
 import type { Node } from 'react';
 
-import type { ConfigBlockId } from '../../state/config/types';
+import type { BlockId } from '../../constants/types';
 
 type Props = {|
-  id: ConfigBlockId,
+  id: BlockId,
 |};
 
 const BlockItem = ({ id }: Props): Node => {

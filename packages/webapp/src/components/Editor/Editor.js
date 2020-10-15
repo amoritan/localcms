@@ -6,10 +6,10 @@ import type { Node } from 'react';
 
 import EditorField from '../EditorField';
 
-import type { Block } from '../../state/config/types';
+import type { ConfigBlock } from '../../state/config/types';
 
 type Props = {|
-  block: ?Block,
+  block: ?ConfigBlock,
 |};
 
 const Editor = ({ block }: Props): Node => {

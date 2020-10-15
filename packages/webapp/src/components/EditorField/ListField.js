@@ -4,17 +4,15 @@ import { last, omit } from 'lodash';
 
 import type { Node } from 'react';
 
-import type {
-  ConfigFieldId,
-  ListField as ListFieldType,
-} from '../../state/config/types';
+import type { ConfigListField } from '../../state/config/types';
+import type { FieldId, ListFieldId } from '../../constants/types';
 
 import EditorField from './EditorField';
 
 type Props = {|
-  name: ConfigFieldId,
+  name: FieldId,
   listFields: {
-    [ConfigFieldId]: ListFieldType,
+    [ListFieldId]: ConfigListField,
   },
 |};
 

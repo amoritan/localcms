@@ -3,12 +3,12 @@ import React from 'react';
 
 import type { Node } from 'react';
 
-import type { Field } from '../../state/config/types';
+import type { ConfigField } from '../../state/config/types';
 
 import EditorField from './EditorField';
 import ListField from './ListField';
 
-type Props = Field;
+type Props = ConfigField;
 
 const EditorFieldWrapper = (props: Props): Node => {
   const { id, type, listFields } = props;

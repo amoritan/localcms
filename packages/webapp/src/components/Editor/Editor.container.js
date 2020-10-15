@@ -7,7 +7,7 @@ import type { ContextRouter } from 'react-router-dom';
 import { getConfigBlockById } from '../../state';
 
 import type { State } from '../../state/types';
-import type { Block } from '../../state/config/types';
+import type { ConfigBlock } from '../../state/config/types';
 
 import Editor from './Editor';
 
@@ -16,7 +16,7 @@ type OwnProps = {|
 |};
 
 type Props = {|
-  block: ?Block,
+  block: ?ConfigBlock,
 |};
 
 const mapStateToProps = (state: State, ownProps: OwnProps): Props => {

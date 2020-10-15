@@ -3,10 +3,10 @@ import React, { useState } from 'react';
 
 import type { Node } from 'react';
 
-import type { ConfigFieldId } from '../../state/config/types';
+import type { FieldId } from '../../constants/types';
 
 type Props = {|
-  htmlId: ConfigFieldId,
+  htmlId: FieldId,
   initialValue?: string,
 |};
 

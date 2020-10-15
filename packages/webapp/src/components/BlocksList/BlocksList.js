@@ -3,12 +3,12 @@ import React from 'react';
 
 import type { Node } from 'react';
 
-import type { ConfigBlockId } from '../../state/config/types';
+import type { BlockId } from '../../constants/types';
 
 import BlockItem from './BlockItem';
 
 type Props = {|
-  blocks: Array<ConfigBlockId>,
+  blocks: Array<BlockId>,
 |};
 
 const BlocksList = ({ blocks }: Props): Node => {
