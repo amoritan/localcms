@@ -15,6 +15,8 @@
     "lint:fix": "eslint --fix --ext .js .",
     "lint:webapp": "cd ./packages/webapp/ && npm run lint",
     "lint:webapp:fix": "cd ./packages/webapp/ && npm run lint:fix",
+    "prettier:check": "prettier --check .",
+    "prettier:write": "prettier --write .",
     "flow:webapp": "cd ./packages/webapp/ && npm run flow",
     "flow-typed:webapp:update": "cd ./packages/webapp/ && npm run flow-typed:update"
   },
@@ -81,6 +83,6 @@
   },
   "lint-staged": {
     "*.js": "eslint --cache --fix && flow:webapp:focused",
-    "*.{js,css,md}": "prettier --write"
+    "*.{js,json,css,md}": "prettier --write"
   }
 }
