@@ -1,44 +1,33 @@
 // @flow strict
-export type FIELD_TYPE_TEXT = 'text';
-export type FIELD_TYPE_MARKDOWN = 'markdown';
-export type FIELD_TYPE_FILE = 'file';
-export type FIELD_TYPE_LIST = 'list';
+import type {
+  BlockId,
+  FieldId,
+  ListFieldId,
+  FieldType,
+} from '../../constants/types';
 
-export type FieldType =
-  | FIELD_TYPE_TEXT
-  | FIELD_TYPE_MARKDOWN
-  | FIELD_TYPE_FILE
-  | FIELD_TYPE_LIST;
-export type ListFieldType =
-  | FIELD_TYPE_TEXT
-  | FIELD_TYPE_MARKDOWN
-  | FIELD_TYPE_FILE;
-
-export type ConfigBlockId = string;
-export type ConfigFieldId = string;
-
-export type ListField = {|
-  id: ConfigFieldId,
-  type: ListFieldType,
+export type ConfigListField = {|
+  id: ListFieldId,
+  type: FieldType,
 |};
 
-export type Field = {|
-  id: ConfigFieldId,
+export type ConfigField = {|
+  id: FieldId,
   type: FieldType,
   listFields?: {
-    [ConfigFieldId]: ListField,
+    [ListFieldId]: ConfigListField,
   },
 |};
 
-export type Block = {|
-  id: ConfigBlockId,
+export type ConfigBlock = {|
+  id: BlockId,
   fields: {
-    [ConfigFieldId]: Field,
+    [FieldId]: ConfigField,
   },
 |};
 
 export type ConfigState = {|
   blocks: {
-    [ConfigBlockId]: Block,
+    [BlockId]: ConfigBlock,
   },
 |};
