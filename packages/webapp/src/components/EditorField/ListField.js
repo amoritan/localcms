@@ -37,10 +37,12 @@ const ListField = ({
       const { type: listFieldType } = listFields[listFieldId];
       return (
         <EditorField
-          key={`${blockId}-${fieldId}-${listFieldId}-${listOccurrenceId}`}
+          key={`${blockId}-${fieldId}-${listOccurrenceId}-${listFieldId}`}
           blockId={blockId}
-          fieldId={listFieldId}
+          fieldId={fieldId}
           type={listFieldType}
+          listOccurrenceId={listOccurrenceId}
+          listFieldId={listFieldId}
           fromList
         />
       );

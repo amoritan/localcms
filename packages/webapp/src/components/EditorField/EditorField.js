@@ -38,7 +38,7 @@ const EditorField = ({
 }: Props): Node => {
   let htmlId = `${blockId}-${fieldId}`;
   if (fromList && listOccurrenceId && listFieldId) {
-    htmlId += `-${listFieldId}-${listOccurrenceId}`;
+    htmlId += `-${listOccurrenceId}-${listFieldId}`;
   }
 
   return (

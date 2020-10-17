@@ -29,8 +29,8 @@ const fakeConfig = {
           id: 'intro',
           type: 'markdown',
         },
-        blog: {
-          id: 'blog',
+        articles: {
+          id: 'articles',
           type: 'list',
           listFields: {
             title: {

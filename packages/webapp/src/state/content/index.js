@@ -15,10 +15,11 @@ import type {
   ListFieldId,
 } from '../../constants/types';
 
+import initialState from './initialState';
 import type { ContentState } from './types';
 
 const content = (
-  state: ContentState = {},
+  state: ContentState = initialState,
   { type, payload }: Action
 ): ContentState => {
   switch (type) {
@@ -46,17 +47,17 @@ const content = (
 
       const { blockId, fieldId } = payload;
       const block = state[blockId];
-      const field = block[fieldId];
-
-      if (typeof field !== 'object') return state;
+      const field = typeof block[fieldId] === 'object' ? block[fieldId] : {};
 
       const lastOccurrenceId = Number(last(Object.keys(field)));
-      const newOccurrenceId = String(lastOccurrenceId + 1);
+      const newOccurrenceId: string = lastOccurrenceId
+        ? String(lastOccurrenceId + 1)
+        : '1';
 
       return {
         ...state,
         [blockId]: {
-          ...field,
+          ...block,
           [fieldId]: {
             ...field,
             [newOccurrenceId]: {},
@@ -81,7 +82,7 @@ const content = (
       return {
         ...state,
         [blockId]: {
-          ...blockId,
+          ...block,
           [fieldId]: omit(field, listOccurrenceId),
         },
       };

@@ -7,6 +7,11 @@ import state from './state';
 import type { Action, Dispatch } from './actions/types';
 import type { State } from './state/types';
 
-const store: Store<State, Action, Dispatch> = createStore(state);
+/* eslint-disable no-underscore-dangle */
+const store: Store<State, Action, Dispatch> = createStore(
+  state,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
+/* eslint-enable */
 
 export default store;
