@@ -20,7 +20,7 @@ const Editor = ({ block }: Props): Node => {
 
   const fieldElements = Object.keys(fields).map((fieldId) => {
     const field = fields[fieldId];
-    return <EditorField key={fieldId} {...field} />;
+    return <EditorField key={fieldId} blockId={id} fieldConfig={field} />;
   });
 
   return (

@@ -4,18 +4,22 @@ import React from 'react';
 import type { Node } from 'react';
 
 import type { ConfigField } from '../../state/config/types';
+import type { BlockId } from '../../constants/types';
 
-import EditorField from './EditorField';
-import ListField from './ListField';
+import EditorField from './EditorField.container';
+import ListField from './ListField.container';
 
-type Props = ConfigField;
+type Props = {|
+  blockId: BlockId,
+  fieldConfig: ConfigField,
+|};
 
-const EditorFieldWrapper = (props: Props): Node => {
-  const { id, type, listFields } = props;
+const EditorFieldWrapper = ({ blockId, fieldConfig }: Props): Node => {
+  const { id, type, listFields } = fieldConfig;
   if (type === 'list' && listFields)
-    return <ListField name={id} listFields={listFields} />;
+    return <ListField blockId={blockId} fieldId={id} listFields={listFields} />;
 
-  return <EditorField name={id} type={type} htmlId={id} />;
+  return <EditorField blockId={blockId} fieldId={id} type={type} />;
 };
 
 export default EditorFieldWrapper;

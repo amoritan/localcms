@@ -1,66 +1,61 @@
 // @flow strict
-import React, { useState } from 'react';
-import { last, omit } from 'lodash';
+import React from 'react';
 
 import type { Node } from 'react';
 
 import type { ConfigListField } from '../../state/config/types';
-import type { FieldId, ListFieldId } from '../../constants/types';
+import type {
+  BlockId,
+  FieldId,
+  ListOccurrenceId,
+  ListFieldId,
+} from '../../constants/types';
 
-import EditorField from './EditorField';
+import EditorField from './EditorField.container';
 
 type Props = {|
-  name: FieldId,
+  blockId: BlockId,
+  fieldId: FieldId,
   listFields: {
     [ListFieldId]: ConfigListField,
   },
+  listOccurrenceIds: Array<ListOccurrenceId>,
+  onListOccurrenceCreated: () => void,
+  onListOccurrenceDeleted: (listOccurrenceId: ListOccurrenceId) => void,
 |};
 
-type OwnState = {|
-  [string]: {},
-|};
-
-const ListField = ({ listFields, name }: Props): Node => {
-  const initialState: OwnState = {
-    // To be replaced with proper content data;
-    1: {},
-  };
-  const [occurrences, setOcurrences] = useState(initialState);
-
-  const createOccurrence = () => {
-    const lastOccurrenceId = last(Object.keys(occurrences));
-    const newOccurrenceId = Number(lastOccurrenceId) + 1;
-    setOcurrences({
-      ...occurrences,
-      [newOccurrenceId]: {},
-    });
-  };
-
-  const deleteOccurrence = (occurrenceId) => {
-    setOcurrences(omit(occurrences, occurrenceId));
-  };
-
-  const occurrencesElements = Object.keys(occurrences).map((occurrenceId) => {
+const ListField = ({
+  blockId,
+  fieldId,
+  listFields,
+  listOccurrenceIds,
+  onListOccurrenceCreated,
+  onListOccurrenceDeleted,
+}: Props): Node => {
+  const occurrencesElements = listOccurrenceIds.map((listOccurrenceId) => {
     const listItemsElements = Object.keys(listFields).map((listFieldId) => {
       const { type: listFieldType } = listFields[listFieldId];
       return (
         <EditorField
-          key={`${name}-${listFieldId}-${occurrenceId}`}
-          name={listFieldId}
+          key={`${blockId}-${fieldId}-${listFieldId}-${listOccurrenceId}`}
+          blockId={blockId}
+          fieldId={listFieldId}
           type={listFieldType}
-          htmlId={`${name}-${listFieldId}-${occurrenceId}`}
           fromList
         />
       );
     });
 
     return (
-      <li className="flex items-center" key={`${name}-${occurrenceId}`}>
+      <li className="flex items-center" key={`${fieldId}-${listOccurrenceId}`}>
         <h4 className="text-2xl text-gray-300 mr-2 ml-6 font-mono">
-          {occurrenceId}
+          {listOccurrenceId}
         </h4>
         <div className="w-full">{listItemsElements}</div>
-        <button type="button" onClick={() => deleteOccurrence(occurrenceId)}>
+        <button
+          type="button"
+          onClick={() => onListOccurrenceDeleted(listOccurrenceId)}
+        >
           Delete
         </button>
       </li>
@@ -69,9 +64,9 @@ const ListField = ({ listFields, name }: Props): Node => {
 
   return (
     <section className="my-8 border-solid border-2 border-gray-200">
-      <h3 className="text-xl font-mono bg-gray-200 p-2">{name}</h3>
+      <h3 className="text-xl font-mono bg-gray-200 p-2">{fieldId}</h3>
       <ol>{occurrencesElements}</ol>
-      <button type="button" onClick={createOccurrence}>
+      <button type="button" onClick={() => onListOccurrenceCreated()}>
         Create
       </button>
     </section>

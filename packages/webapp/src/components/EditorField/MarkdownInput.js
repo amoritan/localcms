@@ -1,5 +1,5 @@
 // @flow strict
-import React, { useState } from 'react';
+import React from 'react';
 
 import type { Node } from 'react';
 
@@ -7,14 +7,13 @@ import type { FieldId } from '../../constants/types';
 
 type Props = {|
   htmlId: FieldId,
-  initialValue?: string,
+  value: string,
+  onFieldUpdated: (value: string) => void,
 |};
 
-const MarkdownInput = ({ htmlId, initialValue }: Props): Node => {
-  const [value, setValue] = useState(initialValue);
-
-  const handleChange = (event) => {
-    setValue(event.target.value);
+const MarkdownInput = ({ htmlId, value, onFieldUpdated }: Props): Node => {
+  const handleChange = (event: SyntheticInputEvent<HTMLInputElement>) => {
+    onFieldUpdated(event.target.value);
   };
 
   return (
@@ -27,10 +26,6 @@ const MarkdownInput = ({ htmlId, initialValue }: Props): Node => {
       onChange={handleChange}
     />
   );
-};
-
-MarkdownInput.defaultProps = {
-  initialValue: '',
 };
 
 export default MarkdownInput;

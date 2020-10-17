@@ -10,5 +10,7 @@ export default config;
 
 export const getBlockIds = (state: ConfigState): Array<BlockId> =>
   Object.keys(state.blocks);
-export const getBlockById = (state: ConfigState, id: BlockId): ConfigBlock =>
-  state.blocks[id];
+export const getBlockById = (
+  state: ConfigState,
+  blockId: BlockId
+): ConfigBlock => state.blocks[blockId];

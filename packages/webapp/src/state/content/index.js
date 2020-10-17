@@ -8,6 +8,12 @@ import {
   CONTENT_LIST_FIELD_UPDATED,
 } from '../../actions/content';
 import type { Action } from '../../actions/types';
+import type {
+  BlockId,
+  FieldId,
+  ListOccurrenceId,
+  ListFieldId,
+} from '../../constants/types';
 
 import type { ContentState } from './types';
 
@@ -124,3 +130,45 @@ const content = (
 };
 
 export default content;
+
+export const getFieldValue = (
+  state: ContentState,
+  blockId: BlockId,
+  fieldId: FieldId
+): string => {
+  const block = state[blockId];
+  const field = block[fieldId];
+
+  if (typeof field !== 'string') return '';
+
+  return field;
+};
+export const getListFieldValue = (
+  state: ContentState,
+  blockId: BlockId,
+  fieldId: FieldId,
+  listOccurrenceId: ListOccurrenceId,
+  listFieldId: ListFieldId
+): string => {
+  const block = state[blockId];
+  const field = block[fieldId];
+
+  if (typeof field !== 'object') return '';
+
+  const listOccurrence = field[listOccurrenceId];
+  const listField = listOccurrence[listFieldId];
+
+  return listField;
+};
+export const getListFieldOccurrenceIds = (
+  state: ContentState,
+  blockId: BlockId,
+  fieldId: FieldId
+): Array<ListOccurrenceId> => {
+  const block = state[blockId];
+  const field = block[fieldId];
+
+  if (typeof field !== 'object') return [];
+
+  return Object.keys(field);
+};
