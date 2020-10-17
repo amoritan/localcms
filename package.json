@@ -15,9 +15,12 @@
     "lint:fix": "eslint --fix --ext .js .",
     "lint:webapp": "cd ./packages/webapp/ && npm run lint",
     "lint:webapp:fix": "cd ./packages/webapp/ && npm run lint:fix",
+    "lint:all": "npm run lint && npm run lint:webapp",
+    "lint:all:fix": "npm run lint:fix && npm run lint:webapp:fix",
     "prettier:check": "prettier --check .",
     "prettier:write": "prettier --write .",
     "flow:webapp": "cd ./packages/webapp/ && npm run flow",
+    "flow:webapp:focused": "cd ./packages/webapp/ && npm run flow:focused",
     "flow-typed:webapp:update": "cd ./packages/webapp/ && npm run flow-typed:update"
   },
   "repository": {
@@ -73,6 +76,9 @@
       "max-statements-per-line": "off"
     }
   },
+  "eslintIgnore": [
+    "packages/webapp/"
+  ],
   "prettier": {
     "singleQuote": true
   },
@@ -82,7 +88,11 @@
     }
   },
   "lint-staged": {
-    "*.js": "eslint --cache --fix && flow:webapp:focused",
-    "*.{js,json,css,md}": "prettier --write"
+    "*.js": [
+      "npm run lint:all:fix",
+      "npm run prettier:write",
+      "npm run flow:webapp:focused"
+    ],
+    "*.{js,json,css,md}": "npm run prettier:write"
   }
 }

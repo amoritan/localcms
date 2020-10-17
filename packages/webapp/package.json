@@ -55,16 +55,20 @@
       "sourceType": "module"
     },
     "plugins": [
-      "react"
+      "react",
+      "flowtype"
     ],
     "rules": {
       "react/jsx-props-no-spreading": "off",
-      "react/jsx-filename-extension": "off"
+      "react/jsx-filename-extension": "off",
+      "flowtype/define-flow-type": "warn",
+      "flowtype/use-flow-type": "warn"
     }
   },
   "eslintIgnore": [
     "postcss.config.js",
-    "tailwind.config.js"
+    "tailwind.config.js",
+    "flow-typed/"
   ],
   "browserslist": {
     "production": [
@@ -83,6 +87,7 @@
     "eslint": "^6.6.0",
     "eslint-config-airbnb": "^18.2.0",
     "eslint-config-prettier": "^6.12.0",
+    "eslint-plugin-flowtype": "^4.7.0",
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-jsx-a11y": "^6.3.1",
     "eslint-plugin-react": "^7.20.4",
