@@ -93,6 +93,6 @@
       "npm run prettier:write",
       "npm run flow:webapp:focused"
     ],
-    "*.{js,json,css,md}": "npm run prettier:write"
+    "*.{json,css,md}": "npm run prettier:write"
   }
 }
