@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "setup": "npm install && npm run install:webapp",
-    "start": "node index.js",
+    "start": "node ./bin/www",
+    "start:server": "nodemon ./bin/www",
     "start:webapp": "cd ./packages/webapp/ && npm start",
     "install:webapp": "cd ./packages/webapp/ && npm install",
     "build:webapp": "cd ./packages/webapp/ && npm run build",
@@ -15,8 +16,6 @@
     "lint:fix": "eslint --fix --ext .js .",
     "lint:webapp": "cd ./packages/webapp/ && npm run lint",
     "lint:webapp:fix": "cd ./packages/webapp/ && npm run lint:fix",
-    "lint:all": "npm run lint && npm run lint:webapp",
-    "lint:all:fix": "npm run lint:fix && npm run lint:webapp:fix",
     "prettier:check": "prettier --check .",
     "prettier:write": "prettier --write .",
     "flow:webapp": "cd ./packages/webapp/ && npm run flow",
@@ -40,16 +39,20 @@
     "url": "https://github.com/andresmoritan/localcms/issues"
   },
   "homepage": "https://github.com/andresmoritan/localcms#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "http-errors": "^1.8.0",
+    "morgan": "^1.10.0"
+  },
   "devDependencies": {
-    "eslint": "^6.8.0",
-    "eslint-config-eslint": "^6.0.0",
+    "eslint": "^7.11.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-config-prettier": "^6.12.0",
     "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-jsdoc": "^15.12.2",
-    "eslint-plugin-node": "^9.2.0",
-    "eslint-plugin-promise": "^4.2.1",
     "husky": "^4.3.0",
     "jest": "^26.4.2",
     "lint-staged": "^10.4.0",
+    "nodemon": "^2.0.5",
     "prettier": "2.1.2"
   },
   "eslintConfig": {
@@ -58,23 +61,13 @@
       "es6": true
     },
     "extends": [
-      "eslint"
+      "airbnb-base",
+      "prettier"
     ],
     "parserOptions": {
-      "ecmaVersion": 2018
+      "ecmaVersion": 12
     },
-    "rules": {
-      "quotes": [
-        "error",
-        "single",
-        {
-          "avoidEscape": true
-        }
-      ],
-      "brace-style": "off",
-      "no-console": "warn",
-      "max-statements-per-line": "off"
-    }
+    "rules": {}
   },
   "eslintIgnore": [
     "packages/webapp/"
@@ -89,10 +82,17 @@
   },
   "lint-staged": {
     "*.js": [
-      "npm run lint:all:fix",
-      "npm run prettier:write",
+      "npm run lint:fix"
+    ],
+    "packages/webapp/*.js": [
+      "npm run lint:webapp:fix",
       "npm run flow:webapp:focused"
     ],
     "*.{json,css,md}": "npm run prettier:write"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "packages/webapp/*"
+    ]
   }
 }
