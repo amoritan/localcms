@@ -37,3 +37,6 @@ packages/webapp/.pnp*
 packages/webapp/coverage
 packages/webapp/build
 packages/webapp/src/index.css
+
+# Implementation
+.localcms.json
