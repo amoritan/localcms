@@ -11,7 +11,7 @@
       "fields": {
         "title": "text",
         "intro": "markdown",
-        "blog": {
+        "articles": {
           "title": "text",
           "photo": "file",
           "content": "markdown"

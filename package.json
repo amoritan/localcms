@@ -83,7 +83,8 @@
   },
   "lint-staged": {
     "*.js": [
-      "npm run lint:fix"
+      "npm run lint:fix",
+      "npm run prettier:write"
     ],
     "packages/webapp/*.js": [
       "npm run lint:webapp:fix",
