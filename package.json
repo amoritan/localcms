@@ -4,9 +4,9 @@
   "description": "The perfect CMS for your static web application",
   "main": "index.js",
   "scripts": {
-    "setup": "npm install && npm run install:webapp",
+    "setup": "npm install && npm run install:webapp && npm run build:webapp",
     "start": "node ./bin/www",
-    "start:server": "nodemon ./bin/www",
+    "start:server": "NODE_ENV=development nodemon ./bin/www",
     "start:webapp": "cd ./packages/webapp/ && npm start",
     "install:webapp": "cd ./packages/webapp/ && npm install",
     "build:webapp": "cd ./packages/webapp/ && npm run build",
@@ -42,6 +42,7 @@
   "dependencies": {
     "express": "^4.17.1",
     "http-errors": "^1.8.0",
+    "http-proxy-middleware": "^1.0.6",
     "morgan": "^1.10.0"
   },
   "devDependencies": {
