@@ -32,7 +32,7 @@ const content = (
         return state;
 
       const { blockId, fieldId, value } = payload;
-      const block = state[blockId];
+      const block = state[blockId] || {};
 
       return {
         ...state,
@@ -46,7 +46,7 @@ const content = (
       if (!payload.blockId || !payload.fieldId) return state;
 
       const { blockId, fieldId } = payload;
-      const block = state[blockId];
+      const block = state[blockId] || {};
       const field = typeof block[fieldId] === 'object' ? block[fieldId] : {};
 
       const lastOccurrenceId = Number(last(Object.keys(field)));
@@ -74,7 +74,7 @@ const content = (
         return state;
 
       const { blockId, fieldId, listOccurrenceId } = payload;
-      const block = state[blockId];
+      const block = state[blockId] || {};
       const field = block[fieldId];
 
       if (typeof field !== 'object') return state;
@@ -104,7 +104,7 @@ const content = (
         listFieldId,
         value,
       } = payload;
-      const block = state[blockId];
+      const block = state[blockId] || {};
       const field = block[fieldId];
 
       if (typeof field !== 'object') return state;
@@ -137,7 +137,7 @@ export const getFieldValue = (
   blockId: BlockId,
   fieldId: FieldId
 ): string => {
-  const block = state[blockId];
+  const block = state[blockId] || {};
   const field = block[fieldId];
 
   if (typeof field !== 'string') return '';
@@ -151,7 +151,7 @@ export const getListFieldValue = (
   listOccurrenceId: ListOccurrenceId,
   listFieldId: ListFieldId
 ): string => {
-  const block = state[blockId];
+  const block = state[blockId] || {};
   const field = block[fieldId];
 
   if (typeof field !== 'object') return '';
@@ -166,7 +166,7 @@ export const getListFieldOccurrenceIds = (
   blockId: BlockId,
   fieldId: FieldId
 ): Array<ListOccurrenceId> => {
-  const block = state[blockId];
+  const block = state[blockId] || {};
   const field = block[fieldId];
 
   if (typeof field !== 'object') return [];

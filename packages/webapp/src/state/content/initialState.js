@@ -1,11 +1,6 @@
 // @flow strict
 import type { ContentState } from './types';
 
-const fakeContent: ContentState = {
-  header: {},
-  blog: {},
-};
-
-const initialState = fakeContent; // TODO: Fetch from file reading logic
+const initialState: ContentState = {};
 
 export default initialState;
