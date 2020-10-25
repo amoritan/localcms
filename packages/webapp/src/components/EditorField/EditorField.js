@@ -44,7 +44,7 @@ const EditorField = ({
   return (
     <fieldset className={fromList ? 'm-4' : 'my-8'}>
       <label htmlFor={htmlId} className="font-mono bg-gray-200 p-2">
-        {fieldId}
+        {listFieldId || fieldId}
       </label>
       {type === 'text' && (
         <TextInput
