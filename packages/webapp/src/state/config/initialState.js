@@ -1,57 +1,8 @@
 // @flow strict
-const fakeConfig = {
-  blocks: {
-    header: {
-      id: 'header',
-      fields: {
-        title: {
-          id: 'title',
-          type: 'text',
-        },
-        intro: {
-          id: 'intro',
-          type: 'markdown',
-        },
-        heroImage: {
-          id: 'heroImage',
-          type: 'file',
-        },
-      },
-    },
-    blog: {
-      id: 'blog',
-      fields: {
-        title: {
-          id: 'title',
-          type: 'text',
-        },
-        intro: {
-          id: 'intro',
-          type: 'markdown',
-        },
-        articles: {
-          id: 'articles',
-          type: 'list',
-          listFields: {
-            title: {
-              id: 'title',
-              type: 'text',
-            },
-            content: {
-              id: 'content',
-              type: 'markdown',
-            },
-            photo: {
-              id: 'photo',
-              type: 'file',
-            },
-          },
-        },
-      },
-    },
-  },
-};
+import type { ConfigState } from './types';
 
-const initialState = fakeConfig; // TODO: Fetch from file reading logic
+const initialState: ConfigState = {
+  blocks: {},
+};
 
 export default initialState;

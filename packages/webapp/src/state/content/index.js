@@ -7,7 +7,7 @@ import {
   CONTENT_LIST_OCCURRENCE_DELETED,
   CONTENT_LIST_FIELD_UPDATED,
 } from '../../actions/content';
-import type { Action } from '../../actions/types';
+import type { ContentAction } from '../../actions/types';
 import type {
   BlockId,
   FieldId,
@@ -20,7 +20,7 @@ import type { ContentState } from './types';
 
 const content = (
   state: ContentState = initialState,
-  { type, payload }: Action
+  { type, payload }: ContentAction
 ): ContentState => {
   switch (type) {
     case CONTENT_FIELD_UPDATED: {

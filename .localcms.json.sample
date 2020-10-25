@@ -1,21 +1,17 @@
 {
   "blocks": {
     "header": {
-      "fields": {
-        "title": "text",
-        "intro": "markdown",
-        "heroImage": "file"
-      }
+      "title": "text",
+      "intro": "markdown",
+      "heroImage": "file"
     },
     "blog": {
-      "fields": {
+      "title": "text",
+      "intro": "markdown",
+      "articles": {
         "title": "text",
-        "intro": "markdown",
-        "articles": {
-          "title": "text",
-          "photo": "file",
-          "content": "markdown"
-        }
+        "photo": "file",
+        "content": "markdown"
       }
     }
   }
