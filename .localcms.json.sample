@@ -1,4 +1,6 @@
 {
+  "contentFilePath": "content.json",
+  "mediaDirectory": "contentMedia/",
   "blocks": {
     "header": {
       "title": "text",

@@ -11,7 +11,7 @@ const network: Middleware<State, Action, Dispatch> = (store) => (next) => (
   const { type } = action;
 
   if (type === CONFIG_REQUESTED) {
-    fetch('/files/config')
+    fetch('/config')
       .then((response) => response.json())
       .then((data) => store.dispatch(configReceived(data)));
   }
