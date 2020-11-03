@@ -5,6 +5,7 @@ const logger = require('morgan');
 const { createProxyMiddleware } = require('http-proxy-middleware');
 
 const configRouter = require('./routes/config');
+const contentRouter = require('./routes/content');
 
 const app = express();
 
@@ -13,6 +14,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use('/config', configRouter);
+app.use('/content', contentRouter);
 
 if (process.env.NODE_ENV === 'development') {
   app.use(
