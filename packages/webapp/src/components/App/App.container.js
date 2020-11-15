@@ -12,7 +12,9 @@ type Props = {|
 |};
 
 const mapDispatchToProps = (dispatch: Dispatch): Props => ({
-  requestConfig: () => dispatch(configRequested()),
+  requestConfig: () => {
+    dispatch(configRequested());
+  },
 });
 
 const AppContainer: ComponentType<Props> = connect(
