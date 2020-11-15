@@ -1,5 +1,5 @@
 {
-  "contentFilePath": "content.json",
+  "contentFile": "content.json",
   "mediaDirectory": "contentMedia/",
   "blocks": {
     "header": {

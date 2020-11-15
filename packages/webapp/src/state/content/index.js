@@ -2,6 +2,7 @@
 import { last, omit } from 'lodash';
 
 import {
+  CONTENT_RECEIVED,
   CONTENT_FIELD_UPDATED,
   CONTENT_LIST_OCCURRENCE_CREATED,
   CONTENT_LIST_OCCURRENCE_DELETED,
@@ -23,6 +24,9 @@ const content = (
   { type, payload }: ContentAction
 ): ContentState => {
   switch (type) {
+    case CONTENT_RECEIVED: {
+      return payload;
+    }
     case CONTENT_FIELD_UPDATED: {
       if (
         !payload.blockId ||

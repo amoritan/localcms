@@ -4,10 +4,8 @@ const { readFile, writeFile } = require('../utils/fileHandler');
 
 const router = express.Router();
 
-const CONTENT_FILE_PATH = 'content.json';
-
 router.get('/', (req, res, next) => {
-  readFile(CONTENT_FILE_PATH)
+  readFile(req.query.path)
     .then((loadedContent) => {
       res.json(loadedContent);
     })
@@ -27,11 +25,11 @@ router.get('/', (req, res, next) => {
 });
 
 router.post('/', (req, res, next) => {
-  writeFile(CONTENT_FILE_PATH, req.body)
+  writeFile(req.query.path, req.body)
     .then(() => {
       res
         .status(200)
-        .json({ success: `Successfully updated ${CONTENT_FILE_PATH}` });
+        .json({ success: `Successfully updated ${req.query.path}` });
     })
     .catch(({ message }) => {
       res.status(500).json({ error: message });

@@ -6,6 +6,7 @@ import type {
   ListFieldId,
 } from '../constants/types';
 import type { ConfigFile } from '../state/config/types';
+import type { ContentState } from '../state/content/types';
 
 // config
 export type ConfigRequestedAction = {|
@@ -18,6 +19,18 @@ export type ConfigReceivedAction = {|
 |};
 
 // content
+export type ContentRequestedAction = {|
+  type: 'CONTENT_REQUESTED',
+  payload: {
+    path: string,
+  },
+|};
+
+export type ContentReceivedAction = {|
+  type: 'CONTENT_RECEIVED',
+  payload: ContentState,
+|};
+
 export type ContentFieldUpdatedAction = {|
   type: 'CONTENT_FIELD_UPDATED',
   payload: {
