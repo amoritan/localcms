@@ -1,4 +1,8 @@
 const fs = require('fs');
+const colors = require('colors/safe');
+
+const { DEFAULT_CONFIG_FILE_PATH } = require('../packages/common/constants');
+const localState = require('./localState');
 
 const readFile = (filePath) =>
   new Promise((resolve, reject) => {
@@ -28,4 +32,59 @@ const writeFile = (filePath, fileContent) =>
     });
   });
 
-module.exports = { readFile, writeFile };
+/* eslint-disable no-console */
+const initFiles = () => {
+  readFile(DEFAULT_CONFIG_FILE_PATH)
+    .then((configPreferences) => {
+      console.info(colors.green('Configuration file loaded successfully!'));
+      localState.setConfig(configPreferences);
+
+      readFile(configPreferences.contentFile)
+        .then((loadedContent) => {
+          console.info(
+            colors.green('Previously saved content loaded successfully!')
+          );
+          localState.setContent(loadedContent);
+        })
+        .catch((readContentFileError) => {
+          if (readContentFileError.name !== 'ReferenceError') {
+            console.error(
+              colors.red.bold(
+                'An error occurred when triying to load the content file'
+              ),
+              readContentFileError.message
+            );
+            process.exit(1);
+          }
+          writeFile(configPreferences.contentFile, {})
+            .then(() => {
+              console.info(
+                colors.green.underline('Content file created successfully!'),
+                `File created on ${process.cwd()}/${
+                  configPreferences.contentFile
+                }`
+              );
+            })
+            .catch((writeContentFileError) => {
+              console.error(
+                colors.red.bold(
+                  'An error occurred when triying to create the content file'
+                ),
+                writeContentFileError.message
+              );
+            });
+        });
+    })
+    .catch((readConfigFileError) => {
+      console.error(
+        colors.red.bold(
+          'An error occurred when triying to load the configuration file'
+        ),
+        readConfigFileError.message
+      );
+      process.exit(1);
+    });
+};
+/* eslint-enable no-console */
+
+module.exports = { readFile, writeFile, initFiles };
