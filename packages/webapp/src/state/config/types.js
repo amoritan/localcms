@@ -62,4 +62,5 @@ export type ConfigFileBlock = {|
 
 export type ConfigFile = {
   blocks: ConfigFileBlock,
+  hasUnsavedChanges: boolean,
 };

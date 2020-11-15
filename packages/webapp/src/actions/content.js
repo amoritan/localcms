@@ -25,9 +25,8 @@ export const CONTENT_LIST_OCCURRENCE_DELETED =
   'CONTENT_LIST_OCCURRENCE_DELETED';
 export const CONTENT_LIST_FIELD_UPDATED = 'CONTENT_LIST_FIELD_UPDATED';
 
-export const contentRequested = (path: string): ContentRequestedAction => ({
+export const contentRequested = (): ContentRequestedAction => ({
   type: CONTENT_REQUESTED,
-  payload: { path },
 });
 
 export const contentReceived = (

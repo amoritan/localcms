@@ -1,5 +1,11 @@
 // @flow strict
 import { CONFIG_RECEIVED } from '../../actions/config';
+import {
+  CONTENT_FIELD_UPDATED,
+  CONTENT_LIST_OCCURRENCE_CREATED,
+  CONTENT_LIST_OCCURRENCE_DELETED,
+  CONTENT_LIST_FIELD_UPDATED,
+} from '../../actions/content';
 
 import type { BlockId } from '../../constants/types';
 import type { ConfigAction } from '../../actions/types';
@@ -18,8 +24,17 @@ const config = (
       if (!action.payload || !action.payload.blocks) return state;
       return {
         blocks: mapBlocksFromFile(action.payload.blocks),
+        hasUnsavedChanges: false,
       };
     }
+    case CONTENT_FIELD_UPDATED:
+    case CONTENT_LIST_OCCURRENCE_CREATED:
+    case CONTENT_LIST_OCCURRENCE_DELETED:
+    case CONTENT_LIST_FIELD_UPDATED:
+      return {
+        ...state,
+        hasUnsavedChanges: true,
+      };
     default:
       return state;
   }

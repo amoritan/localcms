@@ -21,9 +21,6 @@ export type ConfigReceivedAction = {|
 // content
 export type ContentRequestedAction = {|
   type: 'CONTENT_REQUESTED',
-  payload: {
-    path: string,
-  },
 |};
 
 export type ContentReceivedAction = {|

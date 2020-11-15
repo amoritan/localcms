@@ -20,13 +20,13 @@ const network: Middleware<State, Action, Dispatch> = (store) => (next) => (
       .then((response) => response.json())
       .then((data) => {
         store.dispatch(configReceived(data));
-        store.dispatch(contentRequested(data.contentFile));
+        store.dispatch(contentRequested());
       });
   }
 
   if (type === CONTENT_REQUESTED) {
     if (action.payload && action.payload.path) {
-      fetch(`/content?path=${action.payload.path}`)
+      fetch('/content')
         .then((response) => response.json())
         .then((data) => {
           store.dispatch(contentReceived(data));
