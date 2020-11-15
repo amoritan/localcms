@@ -30,6 +30,8 @@ export const getConfigBlockById = (
   state: State,
   blockId: BlockId
 ): ConfigBlock => fromConfig.getBlockById(state.config, blockId);
+export const getHasUnsavedChanges = (state: State): boolean =>
+  fromConfig.getHasUnsavedChanges(state.config);
 
 // content
 export const getFieldValue = (

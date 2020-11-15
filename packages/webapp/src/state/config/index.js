@@ -48,3 +48,6 @@ export const getBlockById = (
   state: ConfigState,
   blockId: BlockId
 ): ConfigBlock => state.blocks[blockId];
+
+export const getHasUnsavedChanges = (state: ConfigState): boolean =>
+  state.hasUnsavedChanges;
