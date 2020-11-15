@@ -2,7 +2,7 @@ const fs = require('fs');
 const colors = require('colors/safe');
 
 const { DEFAULT_CONFIG_FILE_PATH } = require('../packages/common/constants');
-const localState = require('./localState');
+const { setConfig, setContent } = require('../helpers/localState');
 
 const readFile = (filePath) =>
   new Promise((resolve, reject) => {
@@ -37,14 +37,14 @@ const initFiles = () => {
   readFile(DEFAULT_CONFIG_FILE_PATH)
     .then((configPreferences) => {
       console.info(colors.green('Configuration file loaded successfully!'));
-      localState.setConfig(configPreferences);
+      setConfig(configPreferences);
 
       readFile(configPreferences.contentFile)
         .then((loadedContent) => {
           console.info(
             colors.green('Previously saved content loaded successfully!')
           );
-          localState.setContent(loadedContent);
+          setContent(loadedContent);
         })
         .catch((readContentFileError) => {
           if (readContentFileError.name !== 'ReferenceError') {

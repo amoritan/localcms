@@ -15,4 +15,13 @@ class LocalState {
 
 const localState = new LocalState();
 
-module.exports = localState;
+module.exports = {
+  setConfig: (newConfig) => {
+    localState.setConfig(newConfig);
+  },
+  getConfig: () => localState.config,
+  setContent: (newContent) => {
+    localState.setContent(newContent);
+  },
+  getContent: () => localState.content,
+};
