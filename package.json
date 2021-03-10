@@ -4,23 +4,23 @@
   "description": "The perfect CMS for your static web application",
   "main": "index.js",
   "scripts": {
-    "setup": "npm install && npm run install:webapp && npm run build:webapp",
+    "setup": "npm install && npm run install:client && npm run build:client",
     "start": "node ./bin/www",
     "start:server": "NODE_ENV=development nodemon ./bin/www --ignore 'content.json'",
-    "start:webapp": "cd ./packages/webapp/ && npm start",
-    "install:webapp": "cd ./packages/webapp/ && npm install",
-    "build:webapp": "cd ./packages/webapp/ && npm run build",
+    "start:client": "cd ./client/ && npm start",
+    "install:client": "cd ./client/ && npm install",
+    "build:client": "cd ./client/ && npm run build",
     "test": "jest",
-    "test:webapp": "cd ./packages/webapp/ && npm test",
+    "test:client": "cd ./client/ && npm test",
     "lint": "eslint --ext .js .",
     "lint:fix": "eslint --fix --ext .js .",
-    "lint:webapp": "cd ./packages/webapp/ && npm run lint",
-    "lint:webapp:fix": "cd ./packages/webapp/ && npm run lint:fix",
+    "lint:client": "cd ./client/ && npm run lint",
+    "lint:client:fix": "cd ./client/ && npm run lint:fix",
     "prettier:check": "prettier --check .",
     "prettier:write": "prettier --write .",
-    "flow:webapp": "cd ./packages/webapp/ && npm run flow",
-    "flow:webapp:focused": "cd ./packages/webapp/ && npm run flow:focused",
-    "flow-typed:webapp:update": "cd ./packages/webapp/ && npm run flow-typed:update"
+    "flow:client": "cd ./client/ && npm run flow",
+    "flow:client:focused": "cd ./client/ && npm run flow:focused",
+    "flow-typed:client:update": "cd ./client/ && npm run flow-typed:update"
   },
   "repository": {
     "type": "git",
@@ -77,7 +77,7 @@
     "rules": {}
   },
   "eslintIgnore": [
-    "packages/webapp/"
+    "client/"
   ],
   "prettier": {
     "singleQuote": true
@@ -92,20 +92,20 @@
       "npm run lint:fix",
       "npm run prettier:write"
     ],
-    "packages/webapp/*.js": [
-      "npm run lint:webapp:fix",
-      "npm run flow:webapp:focused"
+    "client/*.js": [
+      "npm run lint:client:fix",
+      "npm run flow:client:focused"
     ],
     "*.{json,css,md}": "npm run prettier:write"
   },
   "nodemonConfig": {
     "ignore": [
-      "packages/webapp/*"
+      "client/*"
     ]
   },
   "jest": {
     "testPathIgnorePatterns": [
-      "packages/webapp/"
+      "client/"
     ]
   }
 }

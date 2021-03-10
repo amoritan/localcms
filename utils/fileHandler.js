@@ -1,7 +1,7 @@
 const fs = require('fs');
 const colors = require('colors/safe');
 
-const { DEFAULT_CONFIG_FILE_PATH } = require('../packages/common/constants');
+const { DEFAULT_CONFIG_FILE_PATH } = require('../constants');
 const { setConfig, setContent } = require('../helpers/localState');
 
 const readFile = (filePath) =>

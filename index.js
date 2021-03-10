@@ -25,7 +25,7 @@ if (process.env.NODE_ENV === 'development') {
     })
   );
 } else {
-  app.use(express.static(path.join(__dirname, './packages/webapp/build')));
+  app.use(express.static(path.join(__dirname, './client/build')));
 }
 
 app.use((req, res, next) => {

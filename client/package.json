@@ -1,5 +1,5 @@
 {
-  "name": "localcms-webapp",
+  "name": "localcms-client",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

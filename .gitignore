@@ -17,8 +17,8 @@ build/Release
 
 # Dependency directories
 node_modules/
-packages/webapp/node_modules
-packages/webapp/.pnp*
+client/node_modules
+client/.pnp*
 
 # Optional npm cache directory
 .npm
@@ -34,9 +34,9 @@ packages/webapp/.pnp*
 .env.test
 
 # React
-packages/webapp/coverage
-packages/webapp/build
-packages/webapp/src/index.css
+client/coverage
+client/build
+client/src/index.css
 
 # Implementation
 .localcms.json
