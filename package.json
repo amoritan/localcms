@@ -17,10 +17,7 @@
     "lint:client": "cd ./client/ && npm run lint",
     "lint:client:fix": "cd ./client/ && npm run lint:fix",
     "prettier:check": "prettier --check .",
-    "prettier:write": "prettier --write .",
-    "flow:client": "cd ./client/ && npm run flow",
-    "flow:client:focused": "cd ./client/ && npm run flow:focused",
-    "flow-typed:client:update": "cd ./client/ && npm run flow-typed:update"
+    "prettier:write": "prettier --write ."
   },
   "repository": {
     "type": "git",
@@ -93,8 +90,7 @@
       "npm run prettier:write"
     ],
     "client/*.js": [
-      "npm run lint:client:fix",
-      "npm run flow:client:focused"
+      "npm run lint:client:fix"
     ],
     "*.{json,css,md}": "npm run prettier:write"
   },
