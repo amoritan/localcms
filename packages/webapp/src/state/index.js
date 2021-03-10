@@ -11,6 +11,7 @@ import type {
 import type { Action } from '../actions/types';
 
 import type { ConfigBlock } from './config/types';
+import type { ContentState } from './content/types';
 
 import config, * as fromConfig from './config';
 import content, * as fromContent from './content';
@@ -34,6 +35,7 @@ export const getHasUnsavedChanges = (state: State): boolean =>
   fromConfig.getHasUnsavedChanges(state.config);
 
 // content
+export const getContent = (state: State): ContentState => state.content;
 export const getFieldValue = (
   state: State,
   blockId: BlockId,

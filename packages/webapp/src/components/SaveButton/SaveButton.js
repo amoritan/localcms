@@ -5,11 +5,12 @@ import type { Node } from 'react';
 
 type Props = {|
   hasUnsavedChanges: boolean,
+  onSaveChanges: () => void,
 |};
 
-const SaveButton = ({ hasUnsavedChanges }: Props): Node =>
+const SaveButton = ({ hasUnsavedChanges, onSaveChanges }: Props): Node =>
   hasUnsavedChanges ? (
-    <button onClick={() => {}} type="submit">
+    <button onClick={onSaveChanges} type="submit">
       Save
     </button>
   ) : null;

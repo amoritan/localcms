@@ -6,6 +6,8 @@ import type {
   ListFieldId,
 } from '../constants/types';
 
+import type { ContentState } from '../state/content/types';
+
 import type {
   ContentRequestedAction,
   ContentReceivedAction,
@@ -30,7 +32,7 @@ export const contentRequested = (): ContentRequestedAction => ({
 });
 
 export const contentReceived = (
-  response: ContentFile
+  response: ContentState
 ): ContentReceivedAction => ({
   type: CONTENT_RECEIVED,
   payload: response,

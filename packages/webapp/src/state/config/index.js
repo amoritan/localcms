@@ -6,6 +6,7 @@ import {
   CONTENT_LIST_OCCURRENCE_DELETED,
   CONTENT_LIST_FIELD_UPDATED,
 } from '../../actions/content';
+import { SAVE_RECEIVED } from '../../actions/save';
 
 import type { BlockId } from '../../constants/types';
 import type { ConfigAction } from '../../actions/types';
@@ -34,6 +35,11 @@ const config = (
       return {
         ...state,
         hasUnsavedChanges: true,
+      };
+    case SAVE_RECEIVED:
+      return {
+        ...state,
+        hasUnsavedChanges: false,
       };
     default:
       return state;

@@ -25,6 +25,7 @@ const content = (
 ): ContentState => {
   switch (type) {
     case CONTENT_RECEIVED: {
+      // $FlowFixMe
       return payload;
     }
     case CONTENT_FIELD_UPDATED: {

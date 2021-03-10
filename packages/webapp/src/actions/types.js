@@ -64,14 +64,30 @@ export type ContentListFieldUpdatedAction = {|
   },
 |};
 
+// save
+
+export type SaveRequestedAction = {|
+  type: 'SAVE_REQUESTED',
+|};
+
+export type SaveReceivedAction = {|
+  type: 'SAVE_RECEIVED',
+|};
+
+// shared
+
 export type ConfigAction = ConfigRequestedAction | ConfigReceivedAction;
 
 export type ContentAction =
+  | ContentRequestedAction
+  | ContentReceivedAction
   | ContentFieldUpdatedAction
   | ContentListOccurrenceCreatedAction
   | ContentListOccurrenceDeletedAction
   | ContentListFieldUpdatedAction;
 
-export type Action = ConfigAction | ContentAction;
+export type SaveAction = SaveRequestedAction | SaveReceivedAction;
+
+export type Action = ConfigAction | ContentAction | SaveAction;
 
 export type Dispatch = (action: Action) => void;

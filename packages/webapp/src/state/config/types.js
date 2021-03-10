@@ -40,6 +40,7 @@ export type ConfigBlocks = {|
 
 export type ConfigState = {|
   blocks: ConfigBlocks,
+  hasUnsavedChanges: boolean,
 |};
 
 // file
@@ -62,5 +63,4 @@ export type ConfigFileBlock = {|
 
 export type ConfigFile = {
   blocks: ConfigFileBlock,
-  hasUnsavedChanges: boolean,
 };
