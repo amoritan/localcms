@@ -19,8 +19,8 @@
     "build:css": "postcss ./src/index.scss -o ./src/index.css",
     "test": "SKIP_PREFLIGHT_CHECK=true react-scripts test",
     "eject": "SKIP_PREFLIGHT_CHECK=true react-scripts eject",
-    "lint": "eslint --config ./package.json --ext .js .",
-    "lint:fix": "eslint --config ./package.json --fix --ext .js ."
+    "lint": "eslint --config ./package.json --ext .tsx --ext .ts .",
+    "lint:fix": "eslint --config ./package.json --fix --ext .tsx --ext .ts ."
   },
   "eslintConfig": {
     "root": true,
@@ -30,15 +30,16 @@
       "jest": true
     },
     "extends": [
+      "eslint:recommended",
       "plugin:react/recommended",
-      "airbnb",
+      "plugin:@typescript-eslint/recommended",
       "prettier"
     ],
     "globals": {
       "Atomics": "readonly",
       "SharedArrayBuffer": "readonly"
     },
-    "parser": "babel-eslint",
+    "parser": "@typescript-eslint/parser",
     "parserOptions": {
       "ecmaFeatures": {
         "jsx": true
@@ -47,7 +48,8 @@
       "sourceType": "module"
     },
     "plugins": [
-      "react"
+      "react",
+      "@typescript-eslint"
     ],
     "rules": {
       "react/jsx-props-no-spreading": "off",
@@ -75,12 +77,16 @@
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.8.3",
     "@types/jest": "^26.0.20",
+    "@types/lodash": "^4.14.168",
     "@types/node": "^14.14.34",
     "@types/react": "^17.0.3",
     "@types/react-dom": "^17.0.2",
+    "@types/react-redux": "^7.1.16",
+    "@types/react-router-dom": "^5.1.7",
+    "@typescript-eslint/eslint-plugin": "^4.20.0",
+    "@typescript-eslint/parser": "^4.20.0",
     "autoprefixer": "^10.2.5",
     "eslint": "^7.22.0",
-    "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jsx-a11y": "^6.4.1",
