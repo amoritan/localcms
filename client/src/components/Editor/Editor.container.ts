@@ -1,6 +1,4 @@
-import { connect } from 'react-redux';
-
-import { ComponentType } from 'react';
+import { useSelector } from 'react-redux';
 import { RouteComponentProps } from 'react-router-dom';
 
 import { getConfigBlockById } from '../../state';
@@ -14,19 +12,21 @@ type TParams = { blockId: BlockId };
 
 type OwnProps = RouteComponentProps<TParams>;
 
-interface Props {
-  block: ConfigBlock | null;
+export interface Props extends OwnProps {
+  block: ConfigBlock;
 }
 
-const mapStateToProps = (state: State, ownProps: OwnProps): Props => {
-  if (!ownProps.match.params.blockId) return { block: null };
-  return {
-    block: getConfigBlockById(state, ownProps.match.params.blockId),
-  };
-};
+const EditorContainer = (ownProps: OwnProps): JSX.Element | null => {
+  if (!ownProps.match.params.blockId) return null;
 
-const EditorContainer: ComponentType<OwnProps> = connect(mapStateToProps)(
-  Editor
-);
+  const block = useSelector((state: State) =>
+    getConfigBlockById(state, ownProps.match.params.blockId)
+  );
+
+  return Editor({
+    ...ownProps,
+    block,
+  });
+};
 
 export default EditorContainer;

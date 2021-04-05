@@ -51,7 +51,6 @@ const EditorFieldContainer = (ownProps: OwnProps): JSX.Element => {
   });
 
   const dispatch = useDispatch();
-
   const onFieldUpdated = () => {
     if (
       ownProps.fromList &&

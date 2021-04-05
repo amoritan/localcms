@@ -1,5 +1,4 @@
-import { connect } from 'react-redux';
-import { ComponentType } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
 import { getListFieldOccurrenceIds } from '../../state';
 import {
@@ -14,7 +13,6 @@ import {
   ListOccurrenceId,
   ListFieldId,
 } from '../../constants/types';
-import { Dispatch } from '../../actions/types';
 
 import ListField from './ListField';
 
@@ -24,48 +22,35 @@ interface OwnProps {
   listFields: Record<ListFieldId, ConfigListField>;
 }
 
-interface StateProps {
+export interface Props extends OwnProps {
   listOccurrenceIds: Array<ListOccurrenceId>;
-}
-
-interface DispatchProps {
   onListOccurrenceCreated: () => void;
   onListOccurrenceDeleted: (listOccurrenceId: ListOccurrenceId) => void;
 }
 
-const mapStateToProps = (state: State, ownProps: OwnProps): StateProps => {
-  return {
-    listOccurrenceIds: getListFieldOccurrenceIds(
-      state,
-      ownProps.blockId,
-      ownProps.fieldId
-    ),
-  };
-};
+const ListFieldContainer = (ownProps: OwnProps): JSX.Element => {
+  const listOccurrenceIds = useSelector((state: State) =>
+    getListFieldOccurrenceIds(state, ownProps.blockId, ownProps.fieldId)
+  );
 
-const mapDispatchToProps = (
-  dispatch: Dispatch,
-  ownProps: OwnProps
-): DispatchProps => {
-  return {
-    onListOccurrenceCreated: () =>
-      dispatch(
-        contentListOccurrenceCreated(ownProps.blockId, ownProps.fieldId)
-      ),
-    onListOccurrenceDeleted: (listOccurrenceId: ListOccurrenceId) =>
-      dispatch(
-        contentListOccurrenceDeleted(
-          ownProps.blockId,
-          ownProps.fieldId,
-          listOccurrenceId
-        )
-      ),
-  };
-};
+  const dispatch = useDispatch();
+  const onListOccurrenceCreated = () =>
+    dispatch(contentListOccurrenceCreated(ownProps.blockId, ownProps.fieldId));
+  const onListOccurrenceDeleted = (listOccurrenceId: ListOccurrenceId) =>
+    dispatch(
+      contentListOccurrenceDeleted(
+        ownProps.blockId,
+        ownProps.fieldId,
+        listOccurrenceId
+      )
+    );
 
-const ListFieldContainer: ComponentType<OwnProps> = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ListField);
+  return ListField({
+    ...ownProps,
+    listOccurrenceIds,
+    onListOccurrenceCreated,
+    onListOccurrenceDeleted,
+  });
+};
 
 export default ListFieldContainer;

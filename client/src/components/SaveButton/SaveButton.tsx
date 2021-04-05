@@ -1,18 +1,14 @@
 import React from 'react';
 
-interface Props {
-  hasUnsavedChanges: boolean;
-  onSaveChanges: () => void;
-}
+import { Props } from './SaveButton.container';
 
 const SaveButton = ({
   hasUnsavedChanges,
   onSaveChanges,
-}: Props): JSX.Element | null =>
-  hasUnsavedChanges ? (
-    <button onClick={onSaveChanges} type="submit">
-      Save
-    </button>
-  ) : null;
+}: Props): JSX.Element => (
+  <button onClick={onSaveChanges} type="submit" disabled={!hasUnsavedChanges}>
+    Save
+  </button>
+);
 
 export default SaveButton;

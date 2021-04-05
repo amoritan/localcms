@@ -1,36 +1,28 @@
-import { connect } from 'react-redux';
-import { ComponentType } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
 import { getHasUnsavedChanges } from '../../state';
 import { saveRequested } from '../../actions/save';
 import { State } from '../../state/types';
-import { Dispatch } from '../../actions/types';
 
 import SaveButton from './SaveButton';
 
-interface StateProps {
+export interface Props {
   hasUnsavedChanges: boolean;
-}
-
-interface DispatchProps {
   onSaveChanges: () => void;
 }
 
-const mapStateToProps = (state: State): StateProps => {
-  return {
-    hasUnsavedChanges: getHasUnsavedChanges(state),
-  };
+const SaveButtonContainer = (): JSX.Element => {
+  const hasUnsavedChanges = useSelector((state: State) =>
+    getHasUnsavedChanges(state)
+  );
+
+  const dispatch = useDispatch();
+  const onSaveChanges = () => dispatch(saveRequested());
+
+  return SaveButton({
+    hasUnsavedChanges,
+    onSaveChanges,
+  });
 };
-
-const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => ({
-  onSaveChanges: () => {
-    dispatch(saveRequested());
-  },
-});
-
-const SaveButtonContainer: ComponentType = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(SaveButton);
 
 export default SaveButtonContainer;

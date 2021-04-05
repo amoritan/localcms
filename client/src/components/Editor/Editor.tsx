@@ -1,16 +1,11 @@
 import React from 'react';
 import { startCase } from 'lodash';
 
-import { ConfigBlock } from '../../state/config/types';
 import EditorField from '../EditorField';
 
-interface Props {
-  block: ConfigBlock | null;
-}
+import { Props } from './Editor.container';
 
 const Editor = ({ block }: Props): JSX.Element => {
-  if (!block) return null;
-
   const { id, fields } = block;
   const name = startCase(id);
 

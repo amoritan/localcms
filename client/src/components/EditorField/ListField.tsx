@@ -1,23 +1,7 @@
 import React from 'react';
 
-import { ConfigListField } from '../../state/config/types';
-import {
-  BlockId,
-  FieldId,
-  ListOccurrenceId,
-  ListFieldId,
-} from '../../constants/types';
-
 import EditorField from './EditorField.container';
-
-interface Props {
-  blockId: BlockId;
-  fieldId: FieldId;
-  listFields: Record<ListFieldId, ConfigListField>;
-  listOccurrenceIds: Array<ListOccurrenceId>;
-  onListOccurrenceCreated: () => void;
-  onListOccurrenceDeleted: (listOccurrenceId: ListOccurrenceId) => void;
-}
+import { Props } from './ListField.container';
 
 const ListField = ({
   blockId,

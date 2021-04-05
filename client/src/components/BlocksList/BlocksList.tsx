@@ -1,12 +1,7 @@
 import React from 'react';
 
-import { BlockId } from '../../constants/types';
-
 import BlockItem from './BlockItem';
-
-interface Props {
-  blocks: Array<BlockId>;
-}
+import { Props } from './BlocksList.container';
 
 const BlocksList = ({ blocks }: Props): JSX.Element => {
   const blockElements = blocks.map((blockId) => (
