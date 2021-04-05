@@ -17,7 +17,8 @@
     "lint:client": "cd ./client/ && npm run lint",
     "lint:client:fix": "cd ./client/ && npm run lint:fix",
     "prettier:check": "prettier --check .",
-    "prettier:write": "prettier --write ."
+    "prettier:write": "prettier --write .",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -85,11 +86,11 @@
     }
   },
   "lint-staged": {
-    "*.js": [
+    "*.{js,ts,tsx}": [
       "npm run lint:fix",
       "npm run prettier:write"
     ],
-    "client/*.js": [
+    "client/*.{js,ts,tsx}": [
       "npm run lint:client:fix"
     ],
     "*.{json,css,md}": "npm run prettier:write"
