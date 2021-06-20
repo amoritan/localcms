@@ -3,8 +3,11 @@
   "version": "0.0.1",
   "description": "The perfect CMS for your static web application",
   "main": "index.js",
+  "bin": {
+    "localcms": "./bin/localcms"
+  },
   "scripts": {
-    "setup": "npm install && npm run install:client && npm run build:client",
+    "setup": "npm run install:client && npm run build:client",
     "start": "node ./bin/www",
     "start:server": "NODE_ENV=development nodemon ./bin/www --ignore 'content.json'",
     "start:client": "cd ./client/ && npm start",
@@ -42,7 +45,8 @@
     "express": "^4.17.1",
     "http-errors": "^1.8.0",
     "http-proxy-middleware": "^1.0.6",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "shelljs": "^0.8.4"
   },
   "devDependencies": {
     "eslint": "^7.21.0",
